@@ -17,7 +17,7 @@ namespace shapes {
     Rectangle(Rectangle&&) = default;
 
     Rectangle(const anchor_t& anchor, const sz_t& size) : Shape2D<T>(anchor), _size(size) {};
-    Rectangle(anchor_t&& anchor, sz_t&& size) : Shape2D<T>(std::move<anchor_t>(anchor)), _size(std::move<sz_t>(size)) {};
+    Rectangle(anchor_t&& anchor, sz_t&& size) : Shape2D<T>(std::move(anchor)), _size(std::move(size)) {};
 
     ~Rectangle() = default;
 

@@ -16,7 +16,7 @@ namespace shapes {
     Rhombus(Rhombus&&) = default;
 
     Rhombus(const anchor_t& anchor, const sz_t& size) : Shape2D<T>(anchor), _size(size) {};
-    Rhombus(anchor_t&& anchor, sz_t&& size) : Shape2D<T>(std::move<anchor_t>(anchor)), _size(std::move<sz_t>(size)) {};
+    Rhombus(anchor_t&& anchor, sz_t&& size) : Shape2D<T>(std::move(anchor)), _size(std::move(size)) {};
 
     ~Rhombus() = default;
 
