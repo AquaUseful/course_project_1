@@ -1,0 +1,5 @@
+/home/aq/Projects/pgu/course_project1/qt/build-CourseProject1-Qt6-Debug/config.tests/static_link_order/CMakeFiles/rebuild_cache.dir
+/home/aq/Projects/pgu/course_project1/qt/build-CourseProject1-Qt6-Debug/config.tests/static_link_order/CMakeFiles/edit_cache.dir
+/home/aq/Projects/pgu/course_project1/qt/build-CourseProject1-Qt6-Debug/config.tests/static_link_order/CMakeFiles/static_link_order_test.dir
+/home/aq/Projects/pgu/course_project1/qt/build-CourseProject1-Qt6-Debug/config.tests/static_link_order/CMakeFiles/staticLib.dir
+/home/aq/Projects/pgu/course_project1/qt/build-CourseProject1-Qt6-Debug/config.tests/static_link_order/CMakeFiles/objLib.dir

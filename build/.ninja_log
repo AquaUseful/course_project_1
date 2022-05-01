@@ -1,0 +1,11 @@
+# ninja log v5
+3	663	1651060081625008355	shapes/CMakeFiles/shapes.dir/src/Shape.cpp.o	d745400d815a3b3e
+13	469	1651060081431008353	shapes/CMakeFiles/shapes.dir/src/Rectangle.cpp.o	52fa9e11499175
+0	28	1651406242570445632	build.ninja	92c288575a7057fd
+566	662	1651060104584008549	main/main	e56d40826f5d3df5
+1	566	1651060104489008549	main/CMakeFiles/main.dir/src/main.cpp.o	1bec54db824157d8
+713	729	1651060081691008355	shapes/libshapes.a	c44f0ec8a3349624
+684	700	1651060081662008355	logger/liblogger.a	3bcd6d436b9a236b
+2	596	1651060081558008354	shapes/CMakeFiles/shapes.dir/src/Point.cpp.o	79db490e276a0329
+1	684	1651060081646008355	logger/CMakeFiles/logger.dir/src/Logger.cpp.o	8694bf9778eb6fdf
+25	713	1651060081675008355	shapes/CMakeFiles/shapes.dir/src/Rhombus.cpp.o	6e1ff16b20f7ff33

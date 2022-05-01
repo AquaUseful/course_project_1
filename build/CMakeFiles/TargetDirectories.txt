@@ -1,0 +1,12 @@
+/home/aq/Projects/pgu/course_project1/build/CMakeFiles/edit_cache.dir
+/home/aq/Projects/pgu/course_project1/build/CMakeFiles/rebuild_cache.dir
+/home/aq/Projects/pgu/course_project1/build/utils/CMakeFiles/edit_cache.dir
+/home/aq/Projects/pgu/course_project1/build/utils/CMakeFiles/rebuild_cache.dir
+/home/aq/Projects/pgu/course_project1/build/logger/CMakeFiles/logger.dir
+/home/aq/Projects/pgu/course_project1/build/logger/CMakeFiles/edit_cache.dir
+/home/aq/Projects/pgu/course_project1/build/logger/CMakeFiles/rebuild_cache.dir
+/home/aq/Projects/pgu/course_project1/build/shapes/CMakeFiles/edit_cache.dir
+/home/aq/Projects/pgu/course_project1/build/shapes/CMakeFiles/rebuild_cache.dir
+/home/aq/Projects/pgu/course_project1/build/main/CMakeFiles/main.dir
+/home/aq/Projects/pgu/course_project1/build/main/CMakeFiles/edit_cache.dir
+/home/aq/Projects/pgu/course_project1/build/main/CMakeFiles/rebuild_cache.dir

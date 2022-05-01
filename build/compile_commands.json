@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/aq/Projects/pgu/course_project1/build",
+  "command": "/usr/bin/g++ -I/home/aq/Projects/pgu/course_project1/logger/include -I/home/aq/Projects/pgu/course_project1/utils/include -g -o logger/CMakeFiles/logger.dir/src/Logger.cpp.o -c /home/aq/Projects/pgu/course_project1/logger/src/Logger.cpp",
+  "file": "/home/aq/Projects/pgu/course_project1/logger/src/Logger.cpp"
+},
+{
+  "directory": "/home/aq/Projects/pgu/course_project1/build",
+  "command": "/usr/bin/g++ -I/home/aq/Projects/pgu/course_project1/shapes/include -I/home/aq/Projects/pgu/course_project1/logger/include -I/home/aq/Projects/pgu/course_project1/utils/include -g -o main/CMakeFiles/main.dir/src/main.cpp.o -c /home/aq/Projects/pgu/course_project1/main/src/main.cpp",
+  "file": "/home/aq/Projects/pgu/course_project1/main/src/main.cpp"
+}
+]
