@@ -11,11 +11,11 @@ namespace shapes {
 
     Vec2D() = default;
     Vec2D(const Vec2D&) = default;
-    Vec2D(Vec2D&&) = default;
+    Vec2D(Vec2D&&) noexcept = default;
 
     template <typename U> Vec2D(U&& x, U&& y) : _x(std::forward<U>(x)), _y(std::forward<U>(y)) {};
 
-    template <typename U> Vec2D(const Vec2D<U>& orig) : _x(static_cast<T>(orig.x())), _y(static_cast<T>(orig.y())) {};
+    template <typename U> explicit Vec2D(const Vec2D<U>& orig) : _x(static_cast<T>(orig.x())), _y(static_cast<T>(orig.y())) {};
 
     ~Vec2D() = default;
 

@@ -17,7 +17,7 @@ namespace shapes {
 
     ComplexShape() = delete;
     ComplexShape(const ComplexShape&) = default;
-    ComplexShape(ComplexShape&&) = default;
+    ComplexShape(ComplexShape&&) noexcept = default;
 
     ComplexShape(const rectangle_ptr_t& rect, const rhombus_ptr_t& rh) : _rectangle_ptr(rect), _rhombus_ptr(rh) {};
     ComplexShape(rectangle_ptr_t&& rect, rhombus_ptr_t&& rh)

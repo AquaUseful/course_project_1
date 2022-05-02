@@ -14,7 +14,7 @@ namespace shapes {
 
     Rectangle() = delete;
     Rectangle(const Rectangle&) = default;
-    Rectangle(Rectangle&&) = default;
+    Rectangle(Rectangle&&) noexcept = default;
 
     Rectangle(const anchor_t& anchor, const sz_t& size) : Shape2D<T>(anchor), _size(size) {};
     Rectangle(anchor_t&& anchor, sz_t&& size) : Shape2D<T>(std::move(anchor)), _size(std::move(size)) {};

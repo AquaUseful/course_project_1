@@ -13,10 +13,10 @@ namespace shapes {
 
     Shape2D() = default;
     Shape2D(const Shape2D&) = default;
-    Shape2D(Shape2D&&) = default;
+    Shape2D(Shape2D&&) noexcept = default;
 
-    Shape2D(const anchor_t& anchor) : _anchor(anchor) {};
-    Shape2D(anchor_t&& anchor) : _anchor(std::move(anchor)) {};
+    explicit Shape2D(const anchor_t& anchor) : _anchor(anchor) {};
+    explicit Shape2D(anchor_t&& anchor) : _anchor(std::move(anchor)) {};
     template <typename U> Shape2D(U&& x, U&& y) : _anchor(std::forward<U>(x), std::forward<U>(y)) {};
 
     virtual ~Shape2D() = default;
