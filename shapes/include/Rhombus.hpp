@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+#include <ostream>
 #include <utility>
 
 #include "Shape.hpp"
@@ -26,16 +28,45 @@ namespace shapes {
     template <typename U> void size(U&& size) {
       _size = std::forward<U>(size);
     }
-    const sz_t& size() {
+    const sz_t& size() const {
       return _size;
     }
 
-    void draw() override {
+    void draw(draw::DrawAdapterGTK& adapter) override {
+      adapter.draw_line(top(), right());
+      adapter.draw_line(top(), left());
+      adapter.draw_line(right(), bottom());
+      adapter.draw_line(left(), bottom());
+
+      adapter.stroke();
     }
-    void hide() override {
+    void hide(draw::DrawAdapterGTK& adapter) override {
+    }
+
+    T half_diagonal() {
+      return std::sqrt(2) * _size;
     }
 
   protected:
     T _size {};
+
+    anchor_t top() {
+      return Shape2D<T>::anchor();
+    }
+    anchor_t right() {
+      return Shape2D<T>::anchor() + anchor_t(half_diagonal(), half_diagonal());
+    }
+    anchor_t left() {
+      return Shape2D<T>::anchor() + anchor_t(-half_diagonal(), half_diagonal());
+    }
+    anchor_t bottom() {
+      return anchor_t(Shape2D<T>::anchor().x(), Shape2D<T>::anchor().y() + half_diagonal() * 2);
+    }
   };
+
+  template <typename T> std::ostream& operator<<(std::ostream& stream, const Rhombus<T>& rh) {
+    stream << "Rhombus(" << rh.anchor() << ", " << rh.size() << ')';
+    return stream;
+  }
+
 }

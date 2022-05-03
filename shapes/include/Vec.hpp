@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <ostream>
 #include <utility>
 
 namespace shapes {
@@ -13,9 +14,10 @@ namespace shapes {
     Vec2D(const Vec2D&) = default;
     Vec2D(Vec2D&&) noexcept = default;
 
-    template <typename U> Vec2D(U&& x, U&& y) : _x(std::forward<U>(x)), _y(std::forward<U>(y)) {};
+    Vec2D(const T& x, const T& y) : _x(x), _y(y) {};
+    Vec2D(T&& x, T&& y) : _x(std::move(x)), _y(std::move(y)) {};
 
-    template <typename U> explicit Vec2D(const Vec2D<U>& orig) : _x(static_cast<T>(orig.x())), _y(static_cast<T>(orig.y())) {};
+    // template <typename U> explicit Vec2D(const Vec2D<U>& orig) : _x(static_cast<T>(orig.x())), _y(static_cast<T>(orig.y())) {};
 
     ~Vec2D() = default;
 
@@ -60,5 +62,23 @@ namespace shapes {
     coord_t _x {0};
     coord_t _y {0};
   };
+
+  template <typename T> Vec2D<T> operator+(Vec2D<T> left, const Vec2D<T>& right) {
+    return left += right;
+  }
+  template <typename T> Vec2D<T> operator-(Vec2D<T> left, const Vec2D<T>& right) {
+    return left -= right;
+  }
+  template <typename T> Vec2D<T> operator*(Vec2D<T> left, const T& right) {
+    return left *= right;
+  }
+  template <typename T> Vec2D<T> operator/(Vec2D<T> left, const T& right) {
+    return left /= right;
+  }
+
+  template <typename T> std::ostream& operator<<(std::ostream& stream, const Vec2D<T>& vec) {
+    stream << "Vec2D(" << vec.x() << ", " << vec.y() << ')';
+    return stream;
+  }
 
 }

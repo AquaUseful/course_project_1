@@ -19,9 +19,13 @@ namespace shapes {
     ComplexShape(const ComplexShape&) = default;
     ComplexShape(ComplexShape&&) noexcept = default;
 
-    ComplexShape(const rectangle_ptr_t& rect, const rhombus_ptr_t& rh) : _rectangle_ptr(rect), _rhombus_ptr(rh) {};
-    ComplexShape(rectangle_ptr_t&& rect, rhombus_ptr_t&& rh)
-      : _rectangle_ptr(std::move<rectangle_ptr_t>(rect)), _rhombus_ptr(std::move<rhombus_ptr_t>(rh)) {};
+    ComplexShape(const rhombus_ptr_t& rh, const rectangle_ptr_t& rect) : _rectangle_ptr(rect), _rhombus_ptr(rh) {
+      fix_rectangle();
+    }
+    ComplexShape(rhombus_ptr_t&& rh, rectangle_ptr_t&& rect)
+      : _rectangle_ptr(std::move<rectangle_ptr_t>(rect)), _rhombus_ptr(std::move<rhombus_ptr_t>(rh)) {
+      fix_rectangle();
+    };
 
     ~ComplexShape() = default;
 
@@ -35,17 +39,28 @@ namespace shapes {
       return _rhombus_ptr;
     }
 
-    void draw() override {
-      _rhombus_ptr->draw();
-      _rectangle_ptr->draw();
+    void draw(draw::DrawAdapterGTK& adapter) override {
+      _rhombus_ptr->draw(adapter);
+      _rectangle_ptr->draw(adapter);
     }
-    void hide() override {
-      _rhombus_ptr->hide();
-      _rectangle_ptr->hide();
+    void hide(draw::DrawAdapterGTK& adapter) override {
+      _rhombus_ptr->hide(adapter);
+      _rectangle_ptr->hide(adapter);
     }
 
   protected:
     rectangle_ptr_t _rectangle_ptr;
     rhombus_ptr_t _rhombus_ptr;
+
+    void fix_rectangle() {
+      _rectangle_ptr->anchor(_rhombus_ptr->anchor());
+      _rectangle_ptr->size(typename rectangle_t::sz_t(_rhombus_ptr->half_diagonal(), _rhombus_ptr->half_diagonal() * 2));
+    }
   };
+
+  template <typename T> std::ostream& operator<<(std::ostream& stream, const ComplexShape<T>& ch) {
+    stream << "ComplexShape(" << *ch.rectangle_ptr() << ", " << *ch.rhombus_ptr() << ')';
+    return stream;
+  }
+
 }
