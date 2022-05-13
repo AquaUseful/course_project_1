@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include <ostream>
 #include <utility>
 
 #include "Shape.hpp"
@@ -51,6 +52,10 @@ namespace shapes {
       adapter.stroke();
     }
 
+    std::ostream& print(std::ostream& stream) const override {
+      return (stream << "Rectangle(" << Shape2D<T>::anchor() << ", " << size() << ')');
+    }
+
   protected:
     sz_t _size {};
 
@@ -69,8 +74,7 @@ namespace shapes {
   };
 
   template <typename T> std::ostream& operator<<(std::ostream& stream, const Rectangle<T>& rect) {
-    stream << "Rectangle(" << rect.anchor().x() << ", " << rect.anchor().y() << ", " << rect.size() << ')';
-    return stream;
+    return rect.print(stream);
   }
 
 }

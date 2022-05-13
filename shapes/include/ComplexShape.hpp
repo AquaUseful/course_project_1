@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <ostream>
 #include <utility>
 
 #include "Rectange.hpp"
@@ -32,20 +33,24 @@ namespace shapes {
     ComplexShape& operator=(const ComplexShape&) = default;
     ComplexShape& operator=(ComplexShape&&) = default;
 
-    const rectangle_ptr_t& rectangle_ptr() {
+    const rectangle_ptr_t& rectangle_ptr() const {
       return _rectangle_ptr;
     }
-    const rhombus_ptr_t& rhombus_ptr() {
+    const rhombus_ptr_t& rhombus_ptr() const {
       return _rhombus_ptr;
     }
 
-    void draw(draw::DrawAdapterGTK& adapter) override {
+    void draw(draw::DrawAdapterGTK& adapter) override {                                                          bBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
       _rhombus_ptr->draw(adapter);
       _rectangle_ptr->draw(adapter);
     }
     void hide(draw::DrawAdapterGTK& adapter) override {
       _rhombus_ptr->hide(adapter);
       _rectangle_ptr->hide(adapter);
+    }
+
+    std::ostream& print(std::ostream& stream) const override {
+      return (stream << "ComplexShape(" << (*rectangle_ptr()) << ", " << (*rhombus_ptr()) << ')');
     }
 
   protected:
@@ -59,8 +64,7 @@ namespace shapes {
   };
 
   template <typename T> std::ostream& operator<<(std::ostream& stream, const ComplexShape<T>& ch) {
-    stream << "ComplexShape(" << *ch.rectangle_ptr() << ", " << *ch.rhombus_ptr() << ')';
-    return stream;
+    return ch.print(stream);
   }
 
 }

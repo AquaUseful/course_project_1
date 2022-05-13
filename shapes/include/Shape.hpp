@@ -33,10 +33,9 @@ namespace shapes {
       return _anchor;
     }
 
-    virtual void draw(draw::DrawAdapterGTK& adapter) {
-    }
-    virtual void hide(draw::DrawAdapterGTK& adapter) {
-    }
+    virtual void draw(draw::DrawAdapterGTK& adapter) {};
+    virtual void hide(draw::DrawAdapterGTK& adapter) {};
+
     virtual void move(const anchor_t& new_anchor, draw::DrawAdapterGTK& adapter) {
       hide(adapter);
       _anchor = new_anchor;
@@ -48,13 +47,16 @@ namespace shapes {
       draw(adapter);
     }
 
+    virtual std::ostream& print(std::ostream& stream) const {
+      return (stream << "Shape2D(" << _anchor.x() << ", " << _anchor.y() << ')');
+    }
+
   protected:
     anchor_t _anchor {};
   };
 
   template <typename T> std::ostream& operator<<(std::ostream& stream, const Shape2D<T>& shape) {
-    stream << "Shape2D(" << shape.anchor().x() << ", " << shape.anchor().y() << ')';
-    return stream;
+    return shape.print(stream);
   }
 
 }

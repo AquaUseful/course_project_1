@@ -47,6 +47,10 @@ namespace shapes {
       return std::sqrt(2) * _size;
     }
 
+    std::ostream& print(std::ostream& stream) const override {
+      return (stream << "Rhombus(" << Shape2D<T>::anchor() << ", " << size() << ')');
+    }
+
   protected:
     T _size {};
 
@@ -65,8 +69,7 @@ namespace shapes {
   };
 
   template <typename T> std::ostream& operator<<(std::ostream& stream, const Rhombus<T>& rh) {
-    stream << "Rhombus(" << rh.anchor() << ", " << rh.size() << ')';
-    return stream;
+    return rh.print(stream);
   }
 
 }
