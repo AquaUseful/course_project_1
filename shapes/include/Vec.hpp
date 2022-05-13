@@ -17,7 +17,7 @@ namespace shapes {
     Vec2D(const T& x, const T& y) : _x(x), _y(y) {};
     Vec2D(T&& x, T&& y) : _x(std::move(x)), _y(std::move(y)) {};
 
-    // template <typename U> explicit Vec2D(const Vec2D<U>& orig) : _x(static_cast<T>(orig.x())), _y(static_cast<T>(orig.y())) {};
+    template <typename U> Vec2D(const Vec2D<U>& orig) : _x(static_cast<T>(orig.x())), _y(static_cast<T>(orig.y())) {};
 
     ~Vec2D() = default;
 
