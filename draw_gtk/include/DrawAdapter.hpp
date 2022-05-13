@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <exception>
 #include <memory>
 #include <tuple>
 #include <type_traits>
@@ -19,6 +20,8 @@ namespace draw {
     using area_width_t = decltype(ShapeDrawArea().get_width());
     using area_height_t = decltype(ShapeDrawArea().get_height());
     using area_size_t = shapes::Vec2D<std::common_type_t<area_width_t, area_height_t>>;
+
+    class InvalidCoords : public std::exception {};
 
     DrawAdapterGTK() = delete;
     DrawAdapterGTK(const DrawAdapterGTK&) = default;
@@ -40,6 +43,8 @@ namespace draw {
 
     constexpr static std::array<double, 3> line_color {0.0, 0.0, 0.0};
     constexpr static std::array<double, 3> bg_color {1.0, 1.0, 1.0};
+
+    void check_coords(const area_size_t&) const;
   };
 
 }

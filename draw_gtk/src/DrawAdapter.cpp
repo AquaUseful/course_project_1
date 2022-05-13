@@ -1,4 +1,5 @@
 #include "DrawAdapter.hpp"
+
 #include <memory>
 #include <utility>
 
@@ -13,17 +14,28 @@ const draw::DrawAdapterGTK::area_size_t& draw::DrawAdapterGTK::area_size() const
 }
 
 void draw::DrawAdapterGTK::draw_line(const area_size_t& from, const area_size_t& to) {
+  check_coords(from);
+  check_coords(to);
   _cairo_ctx_ptr->set_source_rgb(line_color[0], line_color[1], line_color[2]);
   _cairo_ctx_ptr->move_to(from.x(), from.y());
   _cairo_ctx_ptr->line_to(to.x(), to.y());
 }
 
 void draw::DrawAdapterGTK::clear_line(const area_size_t& from, const area_size_t& to) {
+  check_coords(from);
+  check_coords(to);
   _cairo_ctx_ptr->set_source_rgb(bg_color[0], bg_color[1], bg_color[2]);
   _cairo_ctx_ptr->move_to(from.x(), from.y());
   _cairo_ctx_ptr->line_to(to.x(), to.y());
+
 }
 
 void draw::DrawAdapterGTK::stroke() {
   _cairo_ctx_ptr->stroke();
+}
+
+void draw::DrawAdapterGTK::check_coords(const area_size_t& coords) const {
+  if ((coords.x() < 0) || (coords.y() < 0) || (coords.x() > _area_size.x()) || (coords.y() > _area_size.y())) {
+    throw InvalidCoords();
+  }
 }
