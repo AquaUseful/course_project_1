@@ -40,7 +40,7 @@ namespace shapes {
       return _rhombus_ptr;
     }
 
-    void draw(draw::DrawAdapterGTK& adapter) override {                                                          bBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+    void draw(draw::DrawAdapterGTK& adapter) override {
       _rhombus_ptr->draw(adapter);
       _rectangle_ptr->draw(adapter);
     }
